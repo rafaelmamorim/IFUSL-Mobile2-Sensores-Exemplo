@@ -1,5 +1,7 @@
 package br.com.rafaelamorim.exemplousosensores;
 
+import static java.lang.String.*;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -175,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
 
-            infoBateria = String.format("Bateria: %d%%\nEstado da Bateria: %s\nSaúde da Bateria: %s", nivelBateria, estadoBateriaStr, saudeBateriaStr);
+            infoBateria = format("Bateria: %d%%\nEstado da Bateria: %s\nSaúde da Bateria: %s", nivelBateria, estadoBateriaStr, saudeBateriaStr);
 
             atualizarTextViewSensores();
         }
@@ -187,13 +189,13 @@ public class MainActivity extends AppCompatActivity {
         int estadoBateria = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_STATUS);
         String estadoBateriaStr = estadoBateria == BatteryManager.BATTERY_STATUS_CHARGING ? "Carregando" : "Descarregando";
 
-        infoBateria = String.format("Bateria: %d%%\nEstado da Bateria: %s", nivelBateria, estadoBateriaStr);
+        infoBateria = format("Bateria: %d%%\nEstado da Bateria: %s", nivelBateria, estadoBateriaStr);
 
         atualizarTextViewSensores();
     }
 
     private void atualizarTextViewSensores() {
-        String infoSensores = String.format(
+        String infoSensores = format(
                 "Luminosidade: %.2f lx\n" +
                         "Proximidade: %.2f cm\n" +
                         "Rotação - Azimute: %.2f°, Pitch: %.2f°, Roll: %.2f°\n" +
@@ -210,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
                 valorPressao
         );
 
-        textViewSensores.setText(String.format("%s\n\n%s", infoBateria, infoSensores));
+        textViewSensores.setText(format("%s\n\n%s", infoBateria, infoSensores));
     }
 
     @Override
